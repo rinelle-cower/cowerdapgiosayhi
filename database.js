@@ -28,7 +28,7 @@ rankCong2:"15"
 
 {
 code:"DG2026-003",
-name:"SUMMER",
+name:"SUMMERY",
 round1:"81.35",
 rank1:"5",
 cong1:"Thăng cấp",
@@ -54,7 +54,7 @@ rankCong2:"2"
 
 {
 code:"DG2026-005",
-name:"anizuoe",
+name:"anizuee",
 round1:"63.75",
 rank1:"18",
 cong1:"Thăng cấp",
@@ -119,7 +119,7 @@ rankCong2:"9"
 
 {
 code:"DG2026-010",
-name:"Tuni",
+name:"Tunii",
 round1:"81.75",
 rank1:"2",
 cong1:"Thăng cấp",
