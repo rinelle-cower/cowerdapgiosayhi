@@ -17,7 +17,16 @@ font-family:"Poppins",sans-serif;
 }
 
 body{
-background: radial-gradient(circle at top,#0a1a2f,#050b16);
+background:
+linear-gradient(rgba(5,10,20,0.85), rgba(5,10,20,0.95)),
+url("logo shoe.png"),
+radial-gradient(circle at top,#0a1a2f,#050b16);
+
+background-size: 400px, auto, auto;
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+
 min-height:100vh;
 display:flex;
 justify-content:center;
@@ -246,7 +255,6 @@ div.innerHTML=`
 </div>
 `;
 
-`;
 
 }
 </script>
