@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,173 +9,160 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins,sans-serif;
+font-family:"Poppins",sans-serif;
 }
 
 body{
-
-background:linear-gradient(135deg,#07111f,#0b2038,#132c4f);
+background: radial-gradient(circle at top,#0a1a2f,#050b16);
 min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 padding:30px;
-
+color:#fff;
 }
 
 .card{
-
-width:700px;
+width:720px;
 max-width:100%;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.12);
-border-radius:25px;
-padding:35px;
-color:white;
-box-shadow:0 20px 60px rgba(0,0,0,.35);
+background:rgba(255,255,255,0.06);
+border-radius:28px;
+padding:40px;
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 0 40px rgba(43,169,255,0.15);
+animation:fadeIn .6s ease;
+}
 
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 h1{
-
 text-align:center;
+font-size:28px;
+background:linear-gradient(90deg,#2ba9ff,#7cf5ff);
+-webkit-background-clip:text;
+color:transparent;
 margin-bottom:8px;
-
 }
 
 .subtitle{
-
 text-align:center;
-color:#d4d4d4;
+color:#aaa;
 margin-bottom:30px;
-
-}
-
-.info{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-
+letter-spacing:1px;
+font-size:14px;
 }
 
 .box{
-
-background:rgba(255,255,255,.08);
-padding:18px;
-border-radius:15px;
-
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:16px;
+transition:.3s;
 }
 
-.box h3{
+.box:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
 
-margin-bottom:12px;
-font-size:18px;
-
+.info{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
 
 .line{
-
 display:flex;
 justify-content:space-between;
-padding:7px 0;
-
+padding:6px 0;
+font-size:14px;
 }
 
 .label{
-
-color:#cfcfcf;
-
+color:#bbb;
 }
 
 .value{
-
 font-weight:600;
+}
 
+h3{
+margin-bottom:12px;
+font-size:16px;
+color:#7fd8ff;
 }
 
 .status{
-
-margin-top:15px;
+margin-top:12px;
 padding:10px;
 border-radius:10px;
 text-align:center;
-font-weight:bold;
-
+font-weight:600;
+font-size:13px;
 }
 
 .green{
-
-background:#23a559;
-
+background:linear-gradient(90deg,#1ed760,#2ecc71);
 }
 
 .red{
-
-background:#d93025;
-
+background:linear-gradient(90deg,#ff4d4d,#d63031);
 }
 
 .orange{
-
-background:#d18d00;
-
+background:linear-gradient(90deg,#ffb347,#ff8c00);
 }
 
 .gray{
-
-background:#555;
-
+background:#444;
 }
 
 button{
-
-margin-top:30px;
+margin-top:35px;
 width:100%;
 padding:14px;
 border:none;
-border-radius:12px;
-background:#2ba9ff;
+border-radius:14px;
+background:linear-gradient(90deg,#2ba9ff,#6dd5fa);
 color:white;
-font-size:16px;
+font-size:15px;
+font-weight:600;
 cursor:pointer;
-
+transition:.3s;
 }
 
 button:hover{
-
-background:#4dbaff;
-
+transform:scale(1.03);
+box-shadow:0 0 20px rgba(43,169,255,0.6);
 }
 
+.notfound{
+text-align:center;
+font-size:18px;
+padding:30px;
+color:#ff6b6b;
+}
 </style>
-
 </head>
 
 <body>
 
 <div class="card">
 
-<h1>🌪️ COWER ĐẠP GIÓ "SAY HI"</h1>
-
-<div class="subtitle">
-
-KẾT QUẢ THÍ SINH
-
-</div>
+<h1>🌪️ COWER ĐẠP GIÓ</h1>
+<div class="subtitle">"SAY HI" – KẾT QUẢ THÍ SINH</div>
 
 <div id="result"></div>
 
 <button onclick="location.href='index.html'">
-
-Quay lại
-
+⬅ Quay lại tra cứu
 </button>
 
 </div>
@@ -184,89 +170,57 @@ Quay lại
 <script src="database.js"></script>
 
 <script>
-
 const params=new URLSearchParams(location.search);
-
 const code=params.get("code");
 
 const user=database.find(x=>x.code===code);
-
 const div=document.getElementById("result");
 
-if(!user){
-
-div.innerHTML="<h2 style='text-align:center'>❌ Không tìm thấy mã tra cứu.</h2>";
-
-}else{
-
 function color(status){
-
 if(status=="Thăng cấp") return "green";
-
 if(status=="Loại") return "red";
-
 if(status=="Rút lui") return "orange";
-
 return "gray";
-
 }
+
+if(!user){
+div.innerHTML="<div class='notfound'>❌ Không tìm thấy mã tra cứu</div>";
+}else{
 
 div.innerHTML=`
 
 <div class="box" style="margin-bottom:20px">
-
 <div class="line">
-
-<span class="label">Nghệ danh</span>
-
+<span class="label">🎤 Nghệ danh</span>
 <span class="value">${user.name}</span>
-
 </div>
 
 <div class="line">
-
-<span class="label">Mã tra cứu</span>
-
+<span class="label">🔑 Mã tra cứu</span>
 <span class="value">${user.code}</span>
-
 </div>
-
 </div>
 
 <div class="info">
 
 <div class="box">
-
 <h3>🌱 Vòng bắt đầu</h3>
-
 <div class="line"><span class="label">Điểm</span><span>${user.round1}</span></div>
-
 <div class="line"><span class="label">Xếp hạng</span><span>#${user.rank1}</span></div>
-
 </div>
 
 <div class="box">
-
 <h3>🏆 Công 1</h3>
-
 <div class="line"><span class="label">Điểm cá nhân</span><span>${user.score1}</span></div>
-
 <div class="line"><span class="label">Thứ hạng</span><span>#${user.rankCong1}</span></div>
-
 <div class="status ${color(user.cong1)}">${user.cong1}</div>
-
 </div>
 
 <div class="box">
-
 <h3>⚡ Công 2</h3>
-
-<div class="line"><span class="label">Điểm cá nhân</span><span>${user.score2??"-"}</span></div>
-
-<div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong2?("#"+user.rankCong2):"-"}</span></div>
-
-<div class="status ${color(user.cong2)}">${user.cong2??"Chưa diễn ra"}</div>
-
+<div class="line"><span class="label">Điểm cá nhân</span><span>${user.score2 ?? "-"}</span></div>
+<div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong2 ? "#" + user.rankCong2 : "-"}</span></div>
+<div class="status ${color(user.cong2)}">${user.cong2 ?? "Chưa diễn ra"}</div>
 </div>
 
 </div>
@@ -274,9 +228,7 @@ div.innerHTML=`
 `;
 
 }
-
 </script>
 
 </body>
-
 </html>
