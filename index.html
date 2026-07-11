@@ -300,6 +300,105 @@ font-size:38px;
 }
 
 }
+  body{
+background: radial-gradient(circle at 20% 20%,#0a1f3d,#050b16 60%);
+color:#fff;
+}
+
+/* HERO TITLE */
+h1{
+font-size:48px;
+font-weight:700;
+line-height:1.2;
+background:linear-gradient(90deg,#2ba9ff,#7cf5ff,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:0 0 25px rgba(43,169,255,0.3);
+}
+
+/* SUBTEXT */
+p{
+color:#aab4c3;
+font-size:16px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(25px);
+border-radius:22px;
+padding:25px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* INPUT */
+input, select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:none;
+background:rgba(255,255,255,0.08);
+color:#fff;
+outline:none;
+margin-top:8px;
+}
+
+input::placeholder{
+color:#aaa;
+}
+
+/* BUTTON */
+button{
+margin-top:20px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+font-size:15px;
+font-weight:600;
+background:linear-gradient(90deg,#2ba9ff,#6dd5fa);
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(43,169,255,0.7);
+}
+
+/* RIGHT INFO BOX */
+.info-box{
+background:rgba(255,255,255,0.04);
+padding:18px;
+border-radius:16px;
+margin-bottom:15px;
+border:1px solid rgba(255,255,255,0.06);
+transition:.3s;
+}
+
+.info-box:hover{
+transform:translateX(5px);
+background:rgba(255,255,255,0.07);
+}
+  .bg-glow{
+position:fixed;
+top:-100px;
+left:-100px;
+width:400px;
+height:400px;
+background:#2ba9ff;
+filter:blur(150px);
+opacity:.25;
+z-index:-1;
+}
+
 
 </style>
 
@@ -307,8 +406,13 @@ font-size:38px;
 
 <body>
 
+<div class="bg-glow"></div>
+
+<!-- phần còn lại của web -->
+
 <div class="blur one"></div>
 <div class="blur two"></div>
+  
 
 <section class="hero">
 
