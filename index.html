@@ -3,160 +3,301 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COWER ĐẠP GIÓ "SAY HI" | Tra cứu kết quả</title>
+<title>COWER ĐẠP GIÓ "SAY HI"</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Poppins",sans-serif;
 }
 
 body{
 
-    background:linear-gradient(135deg,#081320,#10263e,#09111f);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
+background:
+radial-gradient(circle at top,#284f8d 0%,transparent 40%),
+radial-gradient(circle at bottom right,#39285d 0%,transparent 35%),
+#08121d;
+
+color:white;
+overflow-x:hidden;
 
 }
 
-body::before{
+/* nền sáng */
 
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:#00c2ff22;
-    border-radius:50%;
-    top:-180px;
-    left:-150px;
-    filter:blur(90px);
+.blur{
 
-}
-
-body::after{
-
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    background:#8a5cff22;
-    border-radius:50%;
-    bottom:-180px;
-    right:-150px;
-    filter:blur(90px);
+position:fixed;
+width:600px;
+height:600px;
+border-radius:50%;
+filter:blur(130px);
+opacity:.35;
+z-index:-1;
 
 }
 
-.card{
+.one{
 
-    width:430px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:24px;
-    padding:40px;
-    color:white;
-    box-shadow:0 15px 45px rgba(0,0,0,.3);
+background:#00c6ff;
+top:-250px;
+left:-200px;
 
 }
 
-.logo{
+.two{
 
-    font-size:55px;
-    text-align:center;
+background:#7758ff;
+bottom:-250px;
+right:-200px;
+
+}
+
+/* hero */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+}
+
+.container{
+
+width:100%;
+max-width:950px;
+
+background:rgba(255,255,255,.06);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:30px;
+
+padding:60px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:999px;
+
+background:#1ea7ff22;
+
+border:1px solid #48c5ff55;
+
+color:#82d9ff;
+
+margin-bottom:25px;
+
+font-size:14px;
 
 }
 
 h1{
 
-    text-align:center;
-    font-size:28px;
-    margin-top:12px;
+font-size:52px;
+
+line-height:1.1;
+
+margin-bottom:15px;
 
 }
 
-.subtitle{
+p{
 
-    text-align:center;
-    color:#d8d8d8;
-    margin-top:8px;
-    margin-bottom:35px;
-    font-size:14px;
-    line-height:1.6;
+font-size:18px;
+
+color:#d7d7d7;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+max-width:650px;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
+
+align-items:start;
+
+}
+
+.form{
+
+background:rgba(255,255,255,.05);
+
+padding:28px;
+
+border-radius:22px;
 
 }
 
 label{
 
-    display:block;
-    margin-bottom:8px;
-    font-weight:500;
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
 
 }
 
-select,
-input{
+select,input{
 
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:14px;
-    margin-bottom:20px;
-    background:rgba(255,255,255,.12);
-    color:white;
-    outline:none;
-    font-size:15px;
+width:100%;
+
+padding:15px;
+
+border-radius:14px;
+
+border:none;
+
+outline:none;
+
+background:rgba(255,255,255,.09);
+
+color:white;
+
+margin-bottom:22px;
+
+font-size:15px;
 
 }
 
 select option{
 
-    color:black;
-
-}
-
-input::placeholder{
-
-    color:#cccccc;
+color:black;
 
 }
 
 button{
 
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:14px;
-    background:#28b7ff;
-    color:white;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(90deg,#18b8ff,#4d73ff);
+
+font-size:17px;
+
+font-weight:700;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
 
 }
 
 button:hover{
 
-    background:#4dc7ff;
-    transform:translateY(-2px);
+transform:translateY(-3px);
+
+box-shadow:0 10px 30px rgba(61,171,255,.35);
 
 }
 
-.footer{
+.info{
 
-    margin-top:25px;
-    text-align:center;
-    color:#cfcfcf;
-    font-size:13px;
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.box{
+
+background:rgba(255,255,255,.05);
+
+padding:22px;
+
+border-radius:20px;
+
+}
+
+.box h3{
+
+margin-bottom:10px;
+
+color:#8fd8ff;
+
+}
+
+.box p{
+
+font-size:15px;
+
+margin:0;
+
+color:#d6d6d6;
+
+}
+
+footer{
+
+text-align:center;
+
+margin-top:45px;
+
+color:#bfbfbf;
+
+font-size:14px;
+
+}
+
+@media(max-width:850px){
+
+.container{
+
+padding:35px;
+
+}
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+h1{
+
+font-size:38px;
+
+}
 
 }
 
@@ -166,63 +307,116 @@ button:hover{
 
 <body>
 
-<div class="card">
+<div class="blur one"></div>
+<div class="blur two"></div>
 
-<div class="logo">🌪️</div>
+<section class="hero">
 
-<h1>COWER ĐẠP GIÓ "SAY HI"</h1>
+<div class="container">
 
-<p class="subtitle">
-Chào mừng bạn đến với hệ thống tra cứu kết quả chính thức.<br>
-Vui lòng chọn mùa giải và nhập mã tra cứu.
+<div class="badge">
+🌪️ Mùa giải 2026
+</div>
+
+<h1>
+COWER ĐẠP GIÓ "SAY HI"
+</h1>
+
+<p>
+Cổng tra cứu kết quả chính thức dành cho các thí sinh. Nhập mã tra cứu để xem kết quả mới nhất của bạn.
 </p>
+
+<div class="grid">
+
+<div class="form">
 
 <label>Mùa giải</label>
 
 <select id="year">
 
-<option value="2026">2026</option>
+<option>2026</option>
 
 </select>
 
 <label>Mã tra cứu</label>
 
-<input
-type="text"
-id="code"
-placeholder="Ví dụ: DG2026-004">
+<input id="code" placeholder="Ví dụ: DG2026-004">
 
 <button onclick="searchResult()">
 
-TRA CỨU
+TRA CỨU KẾT QUẢ
 
 </button>
 
-<div class="footer">
+</div>
+
+<div class="info">
+
+<div class="box">
+
+<h3>📢 Thông báo</h3>
+
+<p>
+
+Kết quả sẽ được cập nhật sau khi từng vòng thi kết thúc.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>🔒 Bảo mật</h3>
+
+<p>
+
+Mỗi mã tra cứu chỉ hiển thị kết quả của đúng một thí sinh.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>🏆 COWER ĐẠP GIÓ</h3>
+
+<p>
+
+Website tra cứu chính thức của chương trình COWER ĐẠP GIÓ "SAY HI".
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
 
 © 2026 COWER ĐẠP GIÓ "SAY HI"
 
-</div>
+</footer>
 
 </div>
+
+</section>
 
 <script>
 
 function searchResult(){
 
-    const year=document.getElementById("year").value;
-    const code=document.getElementById("code").value.trim();
+const code=document.getElementById("code").value.trim();
 
-    if(code==""){
+if(code==""){
 
-        alert("Vui lòng nhập mã tra cứu.");
-        return;
+alert("Vui lòng nhập mã tra cứu.");
 
-    }
+return;
 
-    // Sau này chỉ cần sửa dòng này
-   window.location.href =
-"result.html?code=" + encodeURIComponent(code);
+}
+
+window.location.href="result.html?code="+encodeURIComponent(code);
 
 }
 
