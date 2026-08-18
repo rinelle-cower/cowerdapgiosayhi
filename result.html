@@ -179,80 +179,100 @@ color:#ff6b6b;
 <script src="database.js"></script>
 
 <script>
-const params=new URLSearchParams(location.search);
-const code=params.get("code");
+const params = new URLSearchParams(location.search);
+const code = params.get("code");
 
-const user=database.find(x=>x.code===code);
-const div=document.getElementById("result");
+const user = database.find(x => x.code === code);
+const div = document.getElementById("result");
 
-function color(status){
-if(status=="Thăng cấp") return "green";
-if(status=="Loại") return "red";
-if(status=="Rút lui") return "orange";
-return "gray";
+function color(status) {
+  if (status == "Thăng cấp") return "green";
+  if (status == "Loại") return "red";
+  if (status == "Rút lui") return "orange";
+  if (status == "Hồi sinh") return "orange";
+  return "gray";
 }
 
-if(!user){
-div.innerHTML="<div class='notfound'>❌ Không tìm thấy mã tra cứu</div>";
-}else{
+if (!user) {
+  div.innerHTML = "<div class='notfound'>❌ Không tìm thấy mã tra cứu</div>";
+} else {
 
-div.innerHTML=`
+  // Xử lý danh sách giải thưởng
+  let giaiThuongHTML = "";
+  if (user.giaiThuong && user.giaiThuong.length > 0) {
+    giaiThuongHTML = `
+      <div class="box" style="grid-column:1/-1; margin-top:10px;">
+        <h3>🏅 Giải thưởng đạt được</h3>
+        <ul style="padding-left: 20px; color: #ffd700; font-size: 14px; line-height: 1.8;">
+          ${user.giaiThuong.map(gt => `<li>${gt}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
 
-<div class="box" style="margin-bottom:20px">
-<div class="line">
-<span class="label">🎤 Nghệ danh</span>
-<span class="value">${user.name}</span>
-</div>
+  div.innerHTML = `
+    <div class="box" style="margin-bottom:20px">
+      <div class="line">
+        <span class="label">🎤 Nghệ danh</span>
+        <span class="value">${user.name}</span>
+      </div>
+      <div class="line">
+        <span class="label">🔑 Mã tra cứu</span>
+        <span class="value">${user.code}</span>
+      </div>
+    </div>
 
-<div class="line">
-<span class="label">🔑 Mã tra cứu</span>
-<span class="value">${user.code}</span>
-</div>
-</div>
+    <div class="info">
 
-<div class="info">
+      <!-- Vòng bắt đầu -->
+      <div class="box">
+        <h3>🌱 Vòng bắt đầu</h3>
+        <div class="line"><span class="label">Điểm</span><span>${user.round1 && user.round1 !== "" ? user.round1 : "-"}</span></div>
+        <div class="line"><span class="label">Xếp hạng</span><span>${user.rank1 && user.rank1 !== "-" ? "#" + user.rank1 : "-"}</span></div>
+      </div>
 
-<div class="box">
-<h3>🌱 Vòng bắt đầu</h3>
-<div class="line"><span class="label">Điểm</span><span>${user.round1 ?? "-"}</span></div>
-<div class="line"><span class="label">Xếp hạng</span><span>${user.rank1 ? "#" + user.rank1 : "-"}</span></div>
-</div>
+      <!-- Công 1 -->
+      <div class="box">
+        <h3>🏆 Công 1</h3>
+        <div class="line"><span class="label">Điểm cá nhân</span><span>${user.score1 ?? "-"}</span></div>
+        <div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong1 ? "#" + user.rankCong1 : "-"}</span></div>
+        <div class="status ${color(user.cong1)}">${user.cong1 ?? "Chưa diễn ra"}</div>
+      </div>
 
-<div class="box">
-<h3>🏆 Công 1</h3>
-<div class="line"><span class="label">Điểm cá nhân</span><span>${user.score1 ?? "-"}</span></div>
-<div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong1 ? "#" + user.rankCong1 : "-"}</span></div>
-<div class="status ${color(user.cong1)}">${user.cong1}</div>
-</div>
+      <!-- Công 2 -->
+      <div class="box">
+        <h3>⚡ Công 2</h3>
+        <div class="line"><span class="label">Điểm cá nhân</span><span>${user.score2 ?? "-"}</span></div>
+        <div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong2 ? "#" + user.rankCong2 : "-"}</span></div>
+        <div class="status ${color(user.cong2)}">${user.cong2 ?? "Chưa diễn ra"}</div>
+      </div>
 
-<div class="box">
-<h3>⚡ Công 2</h3>
-<div class="line"><span class="label">Điểm cá nhân</span><span>${user.score2 ?? "-"}</span></div>
-<div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong2 ? "#" + user.rankCong2 : "-"}</span></div>
-<div class="status ${color(user.cong2)}">${user.cong2 ?? "Chưa diễn ra"}</div>
-</div>
+      <!-- Công 3 -->
+      <div class="box">
+        <h3>🔥 Công 3</h3>
+        <div class="line"><span class="label">Điểm cá nhân</span><span>${user.score3 && user.score3 !== "" ? user.score3 : "-"}</span></div>
+        <div class="line"><span class="label">Thứ hạng</span><span>${user.rankCong3 && user.rankCong3 !== "" ? "#" + user.rankCong3 : "-"}</span></div>
+        <div class="status ${color(user.cong3)}">${user.cong3 && user.cong3 !== "" ? user.cong3 : "Chưa diễn ra"}</div>
+      </div>
 
-<div class="box">
-<h3>🔥 Công 3</h3>
-<div class="line"><span class="label">Điểm cá nhân</span><span>-</span></div>
-<div class="line"><span class="label">Thứ hạng</span><span>-</span></div>
-<div class="status gray">Đang diễn ra</div>
-</div>
+      <!-- Chung kết -->
+      <div class="box" style="grid-column:1/-1">
+        <h3>👑 Chung kết</h3>
+        <div class="line"><span class="label">Điểm cá nhân</span><span>${user.scoreChungKet && user.scoreChungKet !== "" ? user.scoreChungKet : "-"}</span></div>
+        <div class="line"><span class="label">Thứ hạng</span><span>${user.rankChungKet && user.rankChungKet !== "" ? "#" + user.rankChungKet : "-"}</span></div>
+        <div class="status ${user.ketQuaChungKet ? 'green' : 'gray'}">
+          ${user.ketQuaChungKet ? user.ketQuaChungKet : "Chưa diễn ra"}
+        </div>
+      </div>
 
+      <!-- Danh sách giải thưởng -->
+      ${giaiThuongHTML}
 
-
-<div class="box" style="grid-column:1/3">
-<h3>👑 Chung kết</h3>
-<div class="line"><span class="label">Kết quả</span><span>-</span></div>
-<div class="status gray">Chưa diễn ra</div>
-</div>
-
-</div>
-`;
-
-
+    </div>
+  `;
 }
 </script>
+
 
 </body>
 </html>
