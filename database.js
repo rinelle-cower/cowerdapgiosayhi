@@ -72,8 +72,8 @@ const database = [
     rankCong3: "2",
     scoreChungKet: "0",
     rankChungKet: "7",
-    ketQuaChungKet: "Top 3",
-    giaiThuong: ["Top 3 Người đạp gió", "Performace Icon", "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"]
+    ketQuaChungKet: "Á quân",
+    giaiThuong: ["Á quân", "Performace Icon", "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"]
   },
   {
     code: "DG2026-005",
@@ -352,9 +352,9 @@ const database = [
     rankCong3: "3",
     scoreChungKet: "0",
     rankChungKet: "7",
-    ketQuaChungKet: "Rẽ sóng",
+    ketQuaChungKet: "Top 3",
     giaiThuong: [
-      "Á quân",
+      "Top 3 Người đạp gió",
       "Màn trình diễn xuất sắc nhất (Bài hát: CHOOM)",
       "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"
     ]
