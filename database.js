@@ -73,7 +73,7 @@ const database = [
     scoreChungKet: "0",
     rankChungKet: "7",
     ketQuaChungKet: "Top 3",
-    giaiThuong: ["Top 3 Người đạp gió", "Performace Icon"]
+    giaiThuong: ["Top 3 Người đạp gió", "Performace Icon", "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"]
   },
   {
     code: "DG2026-005",
@@ -255,7 +255,7 @@ const database = [
     scoreChungKet: "0",
     rankChungKet: "7",
     ketQuaChungKet: "Rẽ sóng",
-    giaiThuong: ["Best Hit (Bài hát: CHỊ NGÃ EM NÂNG)"]
+    giaiThuong: ["Best Hit (Bài hát: CHỊ NGÃ EM NÂNG)", "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"]
   },
   {
     code: "DG2026-014",
@@ -355,7 +355,8 @@ const database = [
     ketQuaChungKet: "Rẽ sóng",
     giaiThuong: [
       "Á quân",
-      "Màn trình diễn xuất sắc nhất (Bài hát: CHOOM)"
+      "Màn trình diễn xuất sắc nhất (Bài hát: CHOOM)",
+      "Màn trình diễn xuất sắc nhất (Bài hát: Sủng ái (宠爱)"
     ]
   },
   {
